@@ -18,7 +18,13 @@ class Case:
             >>> Case(0).region, Case(80).region, Case(25).region
             (1, 9, 3)
         """
-        pass
+        self.position = pos
+        self.value = value
+        self.row = pos % 9 
+        self.line = pos // 9
+        self.region =pos//9+1 
+       
+       
     
     def setValue(self, value):
         """
@@ -32,7 +38,8 @@ class Case:
             >>> c.value == 8
             True
         """
-        pass
+        
+        self.value = value
         
 if __name__ == '__main__':
     import doctest
