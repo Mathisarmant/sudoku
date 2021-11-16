@@ -1,2 +1,2 @@
 # sudoku 
-par Mathis Armant et Guillaume Gérard
+par Mathis Armant (chef de projet) et Guillaume Gérard (collaborateur)
