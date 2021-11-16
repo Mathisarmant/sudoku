@@ -11,8 +11,13 @@ class Grid:
             >>> Grid().full, Grid(81*'2').full
             (False, True)
         """
-        pass
-            
+        self.puzzle = puzzle
+        if self.puzzle.count('.') > 0 :
+            self.full = False
+        else:
+            self.full = True
+        
+                    
         
     def loadFromFile(num):
         """
