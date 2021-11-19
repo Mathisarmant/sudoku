@@ -16,7 +16,6 @@ class Grid:
             self.full = False
         else:
             self.full = True
-        
                     
         
     def loadFromFile(num):
