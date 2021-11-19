@@ -22,7 +22,7 @@ class Case:
         self.value = value
         self.row = pos % 9 
         self.line = pos // 9
-        self.region =pos//9+1 
+        self.region =(self.line//3)*3+self.row//3+1
        
        
     
@@ -40,7 +40,7 @@ class Case:
         """
         
         self.value = value
-        return None
+        
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
