@@ -1,3 +1,4 @@
+from case import Case
 class Grid:
     
     def __init__(self, puzzle = 81*'.'):
@@ -25,7 +26,7 @@ class Grid:
             >>> Grid.loadFromFile(0).puzzle[:10]
             '4.....8.5.'
         """
-        f = open("../data/grids.sud", 'r')
+        f = open("data/grids.sud", 'r')
         buff = f.readlines()
         f.close()
         return Grid(buff[num][:-1])
@@ -45,7 +46,13 @@ class Grid:
             >>> S.cases[13].region == 2
             True
         """
-        pass
+        self.cases = []
+     
+        for i in range(81) :
+            if self.puzzle [i] == '.' :
+                self.cases.append(Case(i))
+            else :
+                self.cases.append(Case(i, int(self.puzzle[i]))) 
                 
     def casesToString(self):
         """
