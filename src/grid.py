@@ -73,7 +73,10 @@ class Grid:
             >>> S.casesToString()[0] == '5'
             True
         """
-        pass
+        s=""
+        for i in range (81):
+            if ( i+1 )
+            
                 
     def setValue(self, position, value):
         """
@@ -91,7 +94,7 @@ class Grid:
             >>> S.puzzleNow[0] == '7'
             False
         """
-        pass
+
                 
     def __repr__(self):
         """
