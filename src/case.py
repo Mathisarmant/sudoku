@@ -40,7 +40,7 @@ class Case:
         """
         
         self.value = value
-        
+        return None
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
