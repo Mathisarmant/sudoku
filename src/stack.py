@@ -11,7 +11,8 @@ class Stack:
             >>> p.top == None
             True
         """
-        pass
+        self.stack = []
+        self.top = None
         
     def push(self, el):
         """
@@ -28,7 +29,8 @@ class Stack:
             >>> p.top == (12, 1, 9)
             True
         """
-        pass
+        self.stack.append(el)
+        self.top = el
     
     def empty(self):
         """
@@ -42,7 +44,7 @@ class Stack:
             >>> p.empty()
             False
         """
-        pass
+        return len(self.stack) == 0
         
     def pop(self):
         """
@@ -68,7 +70,14 @@ class Stack:
             >>> p.pop()
             13
         """
-        pass
+        if not self.empty():
+            el = self.stack.pop()
+            if not self.empty():
+                self.top = self.stack[-1]
+            else:
+                self.top = None
+            return el
+        return None
         
 if __name__ == '__main__':
     import doctest
