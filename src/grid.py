@@ -29,7 +29,7 @@ class Grid:
             >>> Grid.loadFromFile(0).puzzle[:10]
             '4.....8.5.'
         """
-        f = open("data/grids.sud", 'r')
+        f = open("./data/grids.sud", 'r')
         buff = f.readlines()
         f.close()
         return Grid(buff[num][:-1])
@@ -102,7 +102,6 @@ class Grid:
             
             self.cases[position].valid = True # Changement de valeur, on réinitialise sa validité
             self.verif(position)
-        
     def undo(self):
         """
             Méthode permettant d'annuler les coups
@@ -136,14 +135,14 @@ class Grid:
             >>> S.cases[1].valid
             True
         """
-        for el in self.self(position).line :
-            if self.case (position).valid == self.cases(el).line.value :
-                self.cases(position).valid = True
-                return True
-            
-            else :
-                self.cases(position).valid = False
-                return False
+        c = [el.value for el in self.cases if el.line == self.cases[position].line and el.position != position]
+
+        if self.cases[position].value in c:
+            self.cases[position].valid = False
+            return False
+        else:
+            self.cases[position].valid = True
+            return True
             
     def verifRow(self, position):
         """
@@ -159,14 +158,14 @@ class Grid:
             >>> S.cases[9].valid
             True
         """
-        for el in self.self(position).row :
-            if self.case (position).valid == self.cases(el).row.value :
-                self.cases(position).valid = True
-                return True
-            
-            else :
-                self.cases(position).valid = False
-                return False
+        c = [el.value for el in self.cases if el.row == self.cases[position].row and el.position != position]
+        
+        if self.cases[position].value in c:
+            self.cases[position].valid = False
+            return False
+        else:
+            self.cases[position].valid = True
+            return True
             
     def verifRegion(self, position):
         """
@@ -182,13 +181,26 @@ class Grid:
             >>> S.cases[20].valid
             True
         """
-        pass
+               
+        c = [el.value for el in self.cases if el.region == self.cases[position].region and el.position != position]
+        
+        if self.cases[position].value in c:
+            self.cases[position].valid = False
+            return False
+        else:
+            self.cases[position].valid = True
+            return True
+                
             
     def verif(self, position):
         """
             Méthode qui permet de vérifier la ligne, la colonne et la région.
         """
-        pass
+        a=self.verifLine(position)
+        b=self.verifRow(position)
+        c=self.verifRegion(position)
+        return a and b and c
+        
                     
     def __repr__(self):
         """
@@ -206,3 +218,6 @@ if __name__ == '__main__':
     import doctest
     doctest.testmod()
         
+S = Grid.loadFromFile(0)
+S.setValue(20, 3)
+S.cases[20].valid
