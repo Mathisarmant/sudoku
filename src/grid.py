@@ -29,7 +29,7 @@ class Grid:
             >>> Grid.loadFromFile(0).puzzle[:10]
             '4.....8.5.'
         """
-        f = open("../data/grids.sud", 'r')
+        f = open("data/grids.sud", 'r')
         buff = f.readlines()
         f.close()
         return Grid(buff[num][:-1])
