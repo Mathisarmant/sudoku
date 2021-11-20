@@ -14,6 +14,20 @@ class Stack:
         self.stack = []
         self.top = None
         
+    def empty(self):
+        """
+            Vérifie si la pile est vide
+            
+            Tests :
+            >>> p = Stack()
+            >>> p.empty()
+            True
+            >>> p.push(12)
+            >>> p.empty()
+            False
+        """
+        return len(self.stack) == 0
+        
     def push(self, el):
         """
             Ajouter un élément à la pile
@@ -31,20 +45,6 @@ class Stack:
         """
         self.stack.append(el)
         self.top = el
-    
-    def empty(self):
-        """
-            Vérifie si la pile est vide
-            
-            Tests :
-            >>> p = Stack()
-            >>> p.empty()
-            True
-            >>> p.push(12)
-            >>> p.empty()
-            False
-        """
-        return len(self.stack) == 0
         
     def pop(self):
         """
@@ -71,12 +71,12 @@ class Stack:
             13
         """
         if not self.empty():
-            el = self.stack.pop()
-            if not self.empty():
-                self.top = self.stack[-1]
+            if len(self.stack) > 1:
+                self.top = self.stack[-2]
             else:
                 self.top = None
-            return el
+            return self.stack.pop()
+        
         return None
         
 if __name__ == '__main__':

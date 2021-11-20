@@ -23,6 +23,7 @@ class Case:
         self.line     = pos//9   # Ligne
         self.value    = value
         self.region   = (self.line//3)*3+self.row//3+1
+        self.valid    = True     # Validité par défaut
         
     def setValue(self, value):
         """
