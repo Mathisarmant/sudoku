@@ -136,7 +136,14 @@ class Grid:
             >>> S.cases[1].valid
             True
         """
-        pass
+        for el in self.self(position).line :
+            if self.case (position).valid == self.cases(el).line.value :
+                self.cases(position).valid = True
+                return True
+            
+            else :
+                self.cases(position).valid = False
+                return False
             
     def verifRow(self, position):
         """
@@ -152,7 +159,14 @@ class Grid:
             >>> S.cases[9].valid
             True
         """
-        pass
+        for el in self.self(position).row :
+            if self.case (position).valid == self.cases(el).row.value :
+                self.cases(position).valid = True
+                return True
+            
+            else :
+                self.cases(position).valid = False
+                return False
             
     def verifRegion(self, position):
         """
